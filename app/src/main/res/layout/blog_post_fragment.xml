@@ -28,7 +28,7 @@
         android:layout_height="40dp"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="8/23/2015 11:55:00 AM"
-        android:id="@+id/subTitle"
+        android:id="@+id/subtitle"
         android:singleLine="true"
         android:background="#ff2c29"
         android:layout_below="@+id/title"
@@ -44,14 +44,18 @@
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:id="@+id/scrollView"
-        android:layout_below="@+id/textView"
+        android:layout_below="@+id/subtitle"
         android:layout_centerHorizontal="true" >
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="As an exercise in introducing myself to basic Android development, I created a simple color picking application I call “ColorPicker”. This application takes an input from the user via three “NumberPickers” representing RGB values and displays the resulting color in an “ImageButton” by changing the color of the background of said image button.   Android is based on the MVC structure. MVC stands for “Model-View-Controller” and is an architecture for displaying information to the user. This structure is intuitive because it takes the data from the Model and displays it in a View which the user can see and interact with. The communication between the View and Model happens through the Controller. The primary interaction in ColorPicker happens between a Java class file (MainActivity.java) and an xml file (activity_main.xml). There are other interactions going on in addition to these two files which are outside the scope of this post.   The main view of the application is defined as the “activity_main”. See below for the activity_main.xml of ColorPicker:  "
-            android:id="@+id/text_body"
-            android:padding="10dp" />
     </ScrollView>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="As an exercise in introducing myself to basic Android development, I created a simple color picking application I call “ColorPicker”. This application takes an input from the user via three “NumberPickers” representing RGB values and displays the resulting color in an “ImageButton” by changing the color of the background of said image button.   Android is based on the MVC structure. MVC stands for “Model-View-Controller” and is an architecture for displaying information to the user. This structure is intuitive because it takes the data from the Model and displays it in a View which the user can see and interact with. The communication between the View and Model happens through the Controller. The primary interaction in ColorPicker happens between a Java class file (MainActivity.java) and an xml file (activity_main.xml). There are other interactions going on in addition to these two files which are outside the scope of this post.   The main view of the application is defined as the “activity_main”. See below for the activity_main.xml of ColorPicker:  "
+        android:id="@+id/text_body"
+        android:padding="10dp"
+        android:layout_alignTop="@+id/scrollView"
+        android:layout_centerHorizontal="true" />
+
 </RelativeLayout>

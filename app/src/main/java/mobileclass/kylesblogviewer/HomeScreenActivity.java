@@ -5,19 +5,33 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import java.util.ArrayList;
+
 /**
  * This activity contains the action bar and is used simply as a driver
  */
 public class HomeScreenActivity extends ActionBarActivity {
 
+    private ArrayList<BlogPost> mBlogPosts;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_screen);
-        getFragmentManager().beginTransaction().replace(R.id.leftFragmentContainer, new BlogItemsFragment()).commit();
+
+        getData();
+
+
+        BlogItemsFragment.newInstance()
+        getFragmentManager().beginTransaction().replace(R.id.leftFragmentContainer, ).commit();
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+    }
+
+    private void getData() {
+        HttpGet httpGet = new HttpGet("http://javatechig.com/android/display-html-in-android-textview");
+        mBlogPosts = httpGet.getBlogPostArray();
     }
 
     @Override
