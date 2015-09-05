@@ -65,7 +65,7 @@ public class BlogItemsFragment extends ListFragment {
         BlogPost selectedBlogPost = mBlogPosts.get(position);
         Fragment blogPost = BlogPostFragment.newInstance(selectedBlogPost);
         FragmentManager fm = getFragmentManager();
-        fm.beginTransaction().addToBackStack(null ).replace(R.id.mainContainer, blogPost).commit();
+        fm.beginTransaction().replace(R.id.mainContainer, blogPost).commit();
 
 
     }
