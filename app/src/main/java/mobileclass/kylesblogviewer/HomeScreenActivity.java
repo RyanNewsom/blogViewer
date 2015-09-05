@@ -1,5 +1,6 @@
 package mobileclass.kylesblogviewer;
 
+import android.app.Fragment;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -21,16 +22,15 @@ public class HomeScreenActivity extends ActionBarActivity {
 
         getData();
 
-
-        BlogItemsFragment.newInstance()
-        getFragmentManager().beginTransaction().replace(R.id.leftFragmentContainer, ).commit();
+        Fragment blogItemsFragment = BlogItemsFragment.newInstance(mBlogPosts);
+        getFragmentManager().beginTransaction().replace(R.id.leftFragmentContainer, blogItemsFragment).commit();
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
     }
 
     private void getData() {
-        HttpGet httpGet = new HttpGet("http://javatechig.com/android/display-html-in-android-textview");
+        HttpGet httpGet = new HttpGet("http://www.kylefrisbie.com/api/blogposts");
         mBlogPosts = httpGet.getBlogPostArray();
     }
 

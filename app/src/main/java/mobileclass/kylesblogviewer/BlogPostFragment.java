@@ -10,6 +10,8 @@ import android.widget.TextView;
 
 import org.w3c.dom.Text;
 
+import java.util.ArrayList;
+
 
 /**
  * A simple {@link Fragment} subclass.
@@ -18,7 +20,7 @@ import org.w3c.dom.Text;
  */
 public class BlogPostFragment extends Fragment {
 
-    private blogPost;
+    private static ArrayList<BlogPost> mBlogPosts;
     private TextView title;
     private TextView subTitle;
     private TextView textBody;
@@ -31,12 +33,9 @@ public class BlogPostFragment extends Fragment {
      * @return A new instance of fragment BlogPostFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static BlogPostFragment newInstance(String param1) {
+    public static BlogPostFragment newInstance(ArrayList<BlogPost> blogPosts) {
         BlogPostFragment fragment = new BlogPostFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
+        mBlogPosts = blogPosts;
         return fragment;
     }
 
@@ -49,7 +48,7 @@ public class BlogPostFragment extends Fragment {
         super.onCreate(savedInstanceState);
 
         title = (TextView) getView().findViewById(R.id.title);
-        subTitle = (TextView) getView().findViewById(R.id.subTitle);
+        subTitle = (TextView) getView().findViewById(R.id.subtitle);
         textBody = (TextView) getView().findViewById(R.id.text_body);
     }
 
