@@ -7,6 +7,7 @@ import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 
@@ -21,6 +22,7 @@ public class BlogPostFragment extends Fragment {
     private TextView title;
     private TextView subTitle;
     private TextView textBody;
+    private RelativeLayout mainContainer;
 
     /**
      *
@@ -57,6 +59,7 @@ public class BlogPostFragment extends Fragment {
         title = (TextView) getView().findViewById(R.id.title);
         subTitle = (TextView) getView().findViewById(R.id.subtitle);
         textBody = (TextView) getView().findViewById(R.id.text_body);
+        mainContainer = (RelativeLayout) getView().findViewById(R.id.mainContainer);
 
         title.setText(mBlogPost.getTitle());
         subTitle.setText(mBlogPost.getSubTitile());

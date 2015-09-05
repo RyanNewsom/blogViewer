@@ -28,7 +28,7 @@ public class HomeScreenActivity extends ActionBarActivity {
         getData();
 
         Fragment blogItemsFragment = BlogItemsFragment.newInstance(mBlogPosts);
-        getFragmentManager().beginTransaction().replace(R.id.leftFragmentContainer, blogItemsFragment).commit();
+        getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.mainContainer, blogItemsFragment).commit();
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
@@ -60,9 +60,9 @@ public class HomeScreenActivity extends ActionBarActivity {
             return true;
         }
 
-        if(id == R.id.homeAsUp){
+        if(id == android.R.id.home){
             Fragment blogItemsFragment = BlogItemsFragment.newInstance(mBlogPosts);
-            getFragmentManager().beginTransaction().replace(R.id.leftFragmentContainer, blogItemsFragment).commit();
+            getFragmentManager().beginTransaction().replace(R.id.mainContainer, blogItemsFragment).commit();
         }
 
         return super.onOptionsItemSelected(item);
