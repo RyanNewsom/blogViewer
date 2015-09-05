@@ -1,0 +1,57 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="mobileclass.kylesblogviewer.BlogPostFragment"
+    android:id="@+id/relativeLayout1">
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Developing My First Android Application"
+        android:textStyle="bold"
+        android:id="@+id/title"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:singleLine="false"
+        android:textSize="20dp"
+        android:layout_marginTop="10dp"
+        android:textScaleX = "1.5"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:gravity="center_horizontal"
+        android:textIsSelectable="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="8/23/2015 11:55:00 AM"
+        android:id="@+id/subTitle"
+        android:singleLine="true"
+        android:background="#ff2c29"
+        android:layout_below="@+id/title"
+        android:layout_alignStart="@id/title"
+        android:layout_marginTop="15dp"
+        android:layout_alignRight="@+id/title"
+        android:layout_alignEnd="@+id/title"
+        android:gravity="center_vertical"
+        android:paddingLeft="5dp"
+        android:layout_marginBottom="15dp" />
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:id="@+id/scrollView"
+        android:layout_below="@+id/textView"
+        android:layout_centerHorizontal="true" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="As an exercise in introducing myself to basic Android development, I created a simple color picking application I call “ColorPicker”. This application takes an input from the user via three “NumberPickers” representing RGB values and displays the resulting color in an “ImageButton” by changing the color of the background of said image button.   Android is based on the MVC structure. MVC stands for “Model-View-Controller” and is an architecture for displaying information to the user. This structure is intuitive because it takes the data from the Model and displays it in a View which the user can see and interact with. The communication between the View and Model happens through the Controller. The primary interaction in ColorPicker happens between a Java class file (MainActivity.java) and an xml file (activity_main.xml). There are other interactions going on in addition to these two files which are outside the scope of this post.   The main view of the application is defined as the “activity_main”. See below for the activity_main.xml of ColorPicker:  "
+            android:id="@+id/text_body"
+            android:padding="10dp" />
+    </ScrollView>
+</RelativeLayout>

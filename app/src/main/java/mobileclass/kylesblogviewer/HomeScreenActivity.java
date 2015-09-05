@@ -1,18 +1,20 @@
 package mobileclass.kylesblogviewer;
 
 import android.support.v7.app.ActionBarActivity;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
+/**
+ * This activity contains the action bar and is used simply as a driver
+ */
 public class HomeScreenActivity extends ActionBarActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_screen);
-        getFragmentManager().beginTransaction().replace(R.id.leftFragmentContainer, new blogItemsFragment()).commit();
+        getFragmentManager().beginTransaction().replace(R.id.leftFragmentContainer, new BlogItemsFragment()).commit();
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
