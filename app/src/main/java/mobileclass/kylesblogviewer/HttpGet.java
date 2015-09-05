@@ -30,13 +30,13 @@ public class HttpGet {
         URL url;
         try {
             url = new URL(urlS);
-            HttpURLConnection conexion = (HttpURLConnection) url
+            HttpURLConnection connection = (HttpURLConnection) url
                     .openConnection();
-            conexion.setRequestProperty("User-Agent",
+            connection.setRequestProperty("User-Agent",
                     "Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1)");
-            if (conexion.getResponseCode() == HttpURLConnection.HTTP_OK) {
+            if (connection.getResponseCode() == HttpURLConnection.HTTP_OK) {
                 BufferedReader reader = new BufferedReader(
-                        new InputStreamReader(conexion.getInputStream()));
+                        new InputStreamReader(connection.getInputStream()));
                 String linea = reader.readLine();
                 while (linea != null) {
                     pagina += linea;
@@ -46,9 +46,9 @@ public class HttpGet {
 
                 devuelve = pagina;
             } else {
-                conexion.disconnect();
+                connection.disconnect();
             }
-            conexion.disconnect();
+            connection.disconnect();
 
             jsonArray  = new JSONArray(devuelve); // json
             for (int i = 0; i < jsonArray.length(); i++) {
