@@ -1,16 +1,12 @@
 package mobileclass.kylesblogviewer;
 
 
-import android.os.Bundle;
 import android.app.Fragment;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
-import org.w3c.dom.Text;
-
-import java.util.ArrayList;
 
 
 /**
@@ -20,7 +16,7 @@ import java.util.ArrayList;
  */
 public class BlogPostFragment extends Fragment {
 
-    private static ArrayList<BlogPost> mBlogPosts;
+    private static BlogPost mBlogPost;
     private TextView title;
     private TextView subTitle;
     private TextView textBody;
@@ -29,13 +25,18 @@ public class BlogPostFragment extends Fragment {
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
      *
-     * @param param1 Parameter 1.
+     * @param blogPost single blog post from list view.
      * @return A new instance of fragment BlogPostFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static BlogPostFragment newInstance(ArrayList<BlogPost> blogPosts) {
+    public static BlogPostFragment newInstance(BlogPost blogPost) {
         BlogPostFragment fragment = new BlogPostFragment();
-        mBlogPosts = blogPosts;
+        mBlogPost = blogPost;
+
+        fragment.title.setText(blogPost.getTitle());
+        fragment.subTitle.setText(blogPost.getSubTitile());
+        fragment.textBody.setText(blogPost.getPostBody());
+
         return fragment;
     }
 
