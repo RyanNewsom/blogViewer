@@ -23,6 +23,7 @@ import java.util.Date;
 public class BlogItemsFragment extends ListFragment {
 
     private static ArrayList<BlogPost> mBlogPosts;
+    private ArrayList<String> mTitles;
 
     public static BlogItemsFragment newInstance(ArrayList<BlogPost> blogPosts) {
         BlogItemsFragment fragment = new BlogItemsFragment();
@@ -39,7 +40,8 @@ public class BlogItemsFragment extends ListFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-         ArrayAdapter<String> adapter = new ArrayAdapter<String>(inflater.getContext(), android.R.layout.simple_list_item_1, numbers_text);
+        String[] posts = populateListView();
+         ArrayAdapter<String> adapter = new ArrayAdapter<String>(inflater.getContext(), android.R.layout.simple_list_item_1, posts);
          setListAdapter(adapter);
           return super.onCreateView(inflater, container, savedInstanceState);
     }
@@ -48,11 +50,22 @@ public class BlogItemsFragment extends ListFragment {
     public void onListItemClick(ListView l, View v, int position, long id) {
         super.onListItemClick(l, v, position, id);
         //Check to see which item was picked,
-        showBlogPost();
+        showBlogPost(position);
     }
 
-    private void showBlogPost() {
-        Fragment blogPost = BlogPostFragment.newInstance("");
+    private String[] populateListView(){
+        mTitles = new ArrayList<>();
+
+        for(int i = 0; i < mBlogPosts.size(); i++){
+            mTitles.add(i, mBlogPosts.get(i).getTitle());
+        }
+        String [] posts = (String[]) mTitles.toArray();
+        return posts;
+    }
+
+    private void showBlogPost(int position) {
+        BlogPost selectedBlogPost = mBlogPosts.get(position);
+        Fragment blogPost = BlogPostFragment.newInstance(selectedBlogPost);
         FragmentManager fm = getFragmentManager();
         fm.beginTransaction().replace(R.id.mainContainer, blogPost);
 

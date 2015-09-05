@@ -28,14 +28,14 @@ public class BlogPostFragment extends Fragment {
     /**
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
      * @return A new instance of fragment BlogPostFragment.
      */
     // TODO: Rename and change types and number of parameters
     public static BlogPostFragment newInstance(ArrayList<BlogPost> blogPosts) {
         BlogPostFragment fragment = new BlogPostFragment();
         mBlogPosts = blogPosts;
+
+        //put the data in the fragment
         return fragment;
     }
 
