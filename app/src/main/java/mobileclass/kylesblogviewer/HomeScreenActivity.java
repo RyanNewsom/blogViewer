@@ -60,6 +60,11 @@ public class HomeScreenActivity extends ActionBarActivity {
             return true;
         }
 
+        if(id == R.id.homeAsUp){
+            Fragment blogItemsFragment = BlogItemsFragment.newInstance(mBlogPosts);
+            getFragmentManager().beginTransaction().replace(R.id.leftFragmentContainer, blogItemsFragment).commit();
+        }
+
         return super.onOptionsItemSelected(item);
     }
 
