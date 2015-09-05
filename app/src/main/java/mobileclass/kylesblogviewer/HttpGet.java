@@ -1,4 +1,5 @@
 package mobileclass.kylesblogviewer;
+
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -12,13 +13,20 @@ import java.util.ArrayList;
  * Created by Kyle on 9/2/2015.
  */
 public class HttpGet {
-    public static JSONObject getContenxtWeb(String urlS) {
-        String pagina = "", devuelve = "";
-        JSONArray jsonArray;
-        ArrayList<JSONObject> joAry= new ArrayList<>();
-        ArrayList<String> titleAry = new ArrayList<>();
+    private String pagina = "", devuelve = "";
+    private JSONArray jsonArray;
+    private ArrayList<JSONObject> joAry= new ArrayList<>();
+    private ArrayList<BlogPost> blogPostArray = new ArrayList<>();
 
+    public HttpGet(String url) {
+        getContextWeb(url);
+    }
 
+    public ArrayList<BlogPost> getBlogPostArray() {
+        return blogPostArray;
+    }
+
+    public void getContextWeb(String urlS) {
         URL url;
         try {
             url = new URL(urlS);
@@ -39,27 +47,22 @@ public class HttpGet {
                 devuelve = pagina;
             } else {
                 conexion.disconnect();
-                return null;
             }
             conexion.disconnect();
 
             jsonArray  = new JSONArray(devuelve); // json
             for (int i = 0; i < jsonArray.length(); i++) {
-                titleAry.add(i, jsonArray.getJSONObject(i).getString("title"));
+                blogPostArray.add(new BlogPost(
+                        Integer.parseInt(jsonArray.getJSONObject(i).getString("id")),
+                        jsonArray.getJSONObject(i).getString("title"),
+                        jsonArray.getJSONObject(i).getString("subTitle"),
+                        jsonArray.getJSONObject(i).getString("date"),
+                        jsonArray.getJSONObject(i).getString("image"),
+                        jsonArray.getJSONObject(i).getString("postBody")
+                ));
             }
-
-            for (int i = 0; i < titleAry.size(); i++) {
-                System.out.println(titleAry.get(i));
-            }
-
-            return null;
         } catch (Exception ex) {
-            return null;
+
         }
     }
-
-    public static void main(String[] args) {
-        getContenxtWeb("http://www.kylefrisbie.com/api/blogposts");
-    }
 }
-
