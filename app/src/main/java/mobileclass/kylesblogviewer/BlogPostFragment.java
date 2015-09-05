@@ -22,30 +22,15 @@ public class BlogPostFragment extends Fragment {
     private TextView textBody;
 
     /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-<<<<<<< HEAD
      *
-     * @param blogPost single blog post from list view.
-=======
->>>>>>> 5a29a2a2eacba7b87566fc13d6de00210abc9e65
-     * @return A new instance of fragment BlogPostFragment.
+     * @param blogPost
+     * @return
      */
-    // TODO: Rename and change types and number of parameters
     public static BlogPostFragment newInstance(BlogPost blogPost) {
         BlogPostFragment fragment = new BlogPostFragment();
-<<<<<<< HEAD
         mBlogPost = blogPost;
 
-        fragment.title.setText(blogPost.getTitle());
-        fragment.subTitle.setText(blogPost.getSubTitile());
-        fragment.textBody.setText(blogPost.getPostBody());
-
-=======
-        mBlogPosts = blogPosts;
-
         //put the data in the fragment
->>>>>>> 5a29a2a2eacba7b87566fc13d6de00210abc9e65
         return fragment;
     }
 
@@ -56,10 +41,6 @@ public class BlogPostFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        title = (TextView) getView().findViewById(R.id.title);
-        subTitle = (TextView) getView().findViewById(R.id.subtitle);
-        textBody = (TextView) getView().findViewById(R.id.text_body);
     }
 
     @Override
@@ -69,5 +50,15 @@ public class BlogPostFragment extends Fragment {
         return inflater.inflate(R.layout.blog_post_fragment, container, false);
     }
 
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        title = (TextView) getView().findViewById(R.id.title);
+        subTitle = (TextView) getView().findViewById(R.id.subtitle);
+        textBody = (TextView) getView().findViewById(R.id.text_body);
 
+        title.setText(mBlogPost.getTitle());
+        subTitle.setText(mBlogPost.getSubTitile());
+        textBody.setText(mBlogPost.getPostBody());
+    }
 }

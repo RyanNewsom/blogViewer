@@ -40,8 +40,8 @@ public class BlogItemsFragment extends ListFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        String[] posts = populateListView();
-         ArrayAdapter<String> adapter = new ArrayAdapter<String>(inflater.getContext(), android.R.layout.simple_list_item_1, posts);
+         populateListView();
+         ArrayAdapter<String> adapter = new ArrayAdapter<String>(inflater.getContext(), android.R.layout.simple_list_item_1, mTitles);
          setListAdapter(adapter);
           return super.onCreateView(inflater, container, savedInstanceState);
     }
@@ -53,21 +53,19 @@ public class BlogItemsFragment extends ListFragment {
         showBlogPost(position);
     }
 
-    private String[] populateListView(){
+    private void populateListView(){
         mTitles = new ArrayList<>();
 
         for(int i = 0; i < mBlogPosts.size(); i++){
             mTitles.add(i, mBlogPosts.get(i).getTitle());
         }
-        String [] posts = (String[]) mTitles.toArray();
-        return posts;
     }
 
     private void showBlogPost(int position) {
         BlogPost selectedBlogPost = mBlogPosts.get(position);
         Fragment blogPost = BlogPostFragment.newInstance(selectedBlogPost);
         FragmentManager fm = getFragmentManager();
-        fm.beginTransaction().replace(R.id.mainContainer, blogPost);
+        fm.beginTransaction().addToBackStack(null ).replace(R.id.mainContainer, blogPost).commit();
 
 
     }

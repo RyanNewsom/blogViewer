@@ -1,6 +1,7 @@
 package mobileclass.kylesblogviewer;
 
 import android.app.Fragment;
+import android.os.StrictMode;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -20,6 +21,10 @@ public class HomeScreenActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_screen);
 
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+
+        StrictMode.setThreadPolicy(policy);
+
         getData();
 
         Fragment blogItemsFragment = BlogItemsFragment.newInstance(mBlogPosts);
@@ -27,9 +32,11 @@ public class HomeScreenActivity extends ActionBarActivity {
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+
     }
 
     private void getData() {
+
         HttpGet httpGet = new HttpGet("http://www.kylefrisbie.com/api/blogposts");
         mBlogPosts = httpGet.getBlogPostArray();
     }
